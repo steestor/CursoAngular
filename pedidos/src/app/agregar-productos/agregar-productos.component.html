@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  <form [formGroup]="formularioAgregar">
+    <!--NOMBRE-->
+    <div class="form-group">
+      <label>Nombre:</label>
+      <input type="text" class="form-control" formControlName="nombre" />
+    </div>
+    <!--PRECIO-->
+    <div class="form-group">
+      <label>Precio:</label>
+      <input type="number" class="form-control" formControlName="precio" />
+    </div>
+    <!--DESCRIPCION-->
+    <div class="form-group">
+      <label>Descripción:</label>
+      <textarea
+        cols="30"
+        rows="5"
+        class="form-control"
+        formControlName="descripcion"
+      ></textarea>
+    </div>
+    <!--AGREGAR PRODUCTO-->
+    <button
+      [disabled]="!formularioAgregar.valid"
+      class="btn btn-primary"
+      (click)="agregar()"
+    >
+      Agregar producto
+    </button>
+  </form>
+</div>

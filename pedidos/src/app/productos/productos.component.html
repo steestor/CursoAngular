@@ -1,0 +1,30 @@
+<div class="container mt-5">
+  <form class="form-group"></form>
+  <input
+    class="form-control"
+    type="text"
+    (input)="buscarProductos($event)"
+    placeholder="Busque un producto..."
+  />
+
+  <button class="btn btn-primary mt-2" routerLink="/agregar-productos">
+    Agregar producto nuevo
+  </button>
+
+  <div class="row mt-5">
+    <div class="col-sm-3" *ngFor="let producto of productos">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ producto.nombre }}</h5>
+          <h6 class="card-subtitle">{{ producto.productoID }}</h6>
+          <p class="card-text">{{ producto.descripcion }}</p>
+          <p class="card-text">{{ producto.precio }} €</p>
+          <button class="btn btn-primary" (click)="agregar(producto)">
+            Seleccionar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<simple-notifications></simple-notifications>

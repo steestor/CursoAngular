@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row mt-5">
+    <div
+      class="col-sm-3"
+      *ngFor="let pedido of this.pedidosService.listadoPedidosLocalStorage"
+    >
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ pedido.nombreCliente }}</h5>
+          <h6 class="card-subtitle">
+            {{ pedido.totalPedido | currency: 'EUR' }}
+          </h6>
+          <p class="card-text">Productos: {{ pedido.pedidoDetalle.length }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

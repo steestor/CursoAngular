@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="clientes">
+    <h3>Cliente: {{ this.pedidoService.pedido.nombreCliente }}</h3>
+    <h4>
+      Total: {{ this.pedidoService.pedido.totalPedido | currency: 'EUR' }}
+    </h4>
+  </div>
+  <div class="detalle">
+    <table class="table">
+      <thead>
+        <tr align="center">
+          <th scope="col">ProductoID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Total</th>
+          <th scope="col">Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let producto of this.pedidoService.pedido.pedidoDetalle;
+            let index = index
+          "
+          align="center"
+        >
+          <td>{{ producto.productoID }}</td>
+          <td>{{ producto.nombreProducto }}</td>
+          <td>
+            <input
+              (input)="calcularTotal(index)"
+              [(ngModel)]="producto.cantidad"
+              type="text"
+            />
+          </td>
+          <td>{{ producto.precio | currency: 'EUR' }}</td>
+          <td>{{ producto.total | currency: 'EUR' }}</td>
+          <td align="center">
+            <button class="btn" (click)="eliminar(index)">
+              <i class="fas fa-trash" (click)="eliminar(index)"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary" (click)="guardar()">Guardar</button>
+  </div>
+</div>
