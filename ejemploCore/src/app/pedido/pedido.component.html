@@ -1,0 +1,9 @@
+<p>Cliente: {{ pedido.cliente }}</p>
+<p>{{ pedido.direccion }}</p>
+
+<button (click)="agregarProducto()">Agregar producto</button>
+
+<app-pedido-detalle
+  [pedidoDetalle]="pedido.pedidoDetalle"
+  (seEliminoUnProducto)="elHijoEliminoAlgo($event)"
+></app-pedido-detalle>
