@@ -1,0 +1,65 @@
+<!-- CREAMOS NUESTRO PRIMER FORMULARIO-->
+
+<div class="container"> 
+    <form [formGroup]="formularioCreado">
+        <!--NOMBRE-->
+        <div class="form-group">
+            <label>Nombre:</label>
+            <input type="text" class="form-control" formControlName="nombre">
+            <div *ngIf="formularioCreado.controls['nombre'].invalid && formularioCreado.controls['nombre'].dirty" class="alert alert-danger" role="alert">
+                <span *ngIf="formularioCreado.controls['nombre'].errors.required"></span>El nombre es requerido
+            </div>
+        </div>
+
+        <!--CORREO-->
+        <div class="from-group">
+            <label>Correo:</label>
+            <input type="text" class="form-control" formControlName="correo">
+        </div>
+
+        <div *ngIf="formularioCreado.controls['correo'].invalid && formularioCreado.controls['correo'].dirty">
+            <div *ngIf="formularioCreado.controls['correo'].errors.required"  class="alert alert-danger" role="alert">
+                El correo es requerido
+            </div>
+            <div *ngIf="formularioCreado.controls['correo'].errors.email" class="alert alert-danger" role="alert">
+                <span> Parece un formato inválido</span>
+            </div>
+        </div>
+
+        <!--CONTRASEÑA-->
+        <div class="from-group">
+            <label>Contraseña:</label>
+                <input type="password" class="form-control" formControlName="password">
+        </div>
+        <div *ngIf="formularioCreado.controls['password'].invalid && formularioCreado.controls['password'].dirty">
+            <div *ngIf="formularioCreado.controls['password'].errors.required" class="alert alert-danger" role="alert">
+                La contraseña es requerida
+            </div>
+            <div *ngIf="formularioCreado.controls['password'].errors.minlength" class="alert alert-danger" role="alert">
+                La contraseña debe tener al menos 8 carácteres
+            </div>
+        </div>
+
+        <!--BOTON AGREGAR-->
+        <br>
+        <button *ngIf="esNuevo" [disabled]="!formularioCreado.valid" class="btn btn-primary" (click)="crear()"> Crear</button>
+
+        <!--BOTON EDITAR-->
+        <button *ngIf="!esNuevo" [disabled]="!formularioCreado.valid" class="btn btn-warning" (click)="editar()"> Editar</button>
+    </form>
+
+    <!-- Accedemos al formulario creado-->
+    <p>{{formularioCreado.value | json}}</p>
+
+    <!--Comprobamos cuando el formulario es válido-->
+    <p>Es válido? {{formularioCreado.valid}}</p>
+
+    <!-- Creamos un listado con los usuarios-->
+    <div *ngFor="let usuario of usuarios; let posicion= index" class="listado" >
+        <h4>{{usuario.nombre}}; tiene la posición: {{posicion}}</h4>
+        <p>{{usuario.correo}}</p>
+        <p>{{usuario.password}}</p>
+        <button [disabled]='!esNuevo' class="btn btn-warning" (click)="editarUsuario(posicion)">Editar</button>
+        <button class="btn btn-danger" (click)="eliminarUsuario(posicion)">Eliminar</button>
+    </div>
+</div>
