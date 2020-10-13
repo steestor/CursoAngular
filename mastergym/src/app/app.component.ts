@@ -10,10 +10,15 @@ import { getMaxListeners } from 'process';
 })
 export class AppComponent {
   title = 'MasterGym';
+  usuario: firebase.User;
+  cargando: boolean = true;
 
   constructor(public afAuth: AngularFireAuth) {
     this.afAuth.user.subscribe((usuario) => {
-      console.log(usuario);
+      setTimeout(() => {
+        this.cargando = false;
+        this.usuario = usuario;
+      }, 2000);
     });
   }
   login() {
