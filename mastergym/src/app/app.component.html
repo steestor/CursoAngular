@@ -1,9 +1,11 @@
 <div *ngIf="usuario && !cargando; else showLogin">
-  <h1>Hello {{ usuario.email }}!</h1>
-  <button (click)="logout()">Logout</button>
+  <app-encabezado></app-encabezado>
 </div>
+
 <ng-template #showLogin>
-  <div *ngIf="cargando">Cargando...</div>
+  <div *ngIf="cargando">
+    <div class="loader">Loading...</div>
+  </div>
   <app-login *ngIf="!cargando"></app-login>
 </ng-template>
 
