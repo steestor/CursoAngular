@@ -1,5 +1,23 @@
-<div *ngIf="!datosCorrectos" class="alert alert-warning" role="alert">
-  {{ mensajeError }}
+<div
+  *ngIf="!datosCorrectos && mensajeError != ''"
+  class="alert alert-warning"
+  role="alert"
+>
+  {{ "mensajeError" | translate }}
+</div>
+<div
+  *ngIf="!datosCorrectos && mensajeError1 != ''"
+  class="alert alert-warning"
+  role="alert"
+>
+  {{ "mensajeError1" | translate }}
+</div>
+<div
+  *ngIf="!datosCorrectos && mensajeError2 != ''"
+  class="alert alert-warning"
+  role="alert"
+>
+  {{ "mensajeError2" | translate }}
 </div>
 
 <div class="container">

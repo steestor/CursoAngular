@@ -1,0 +1,5 @@
+{
+    "mensajeError":"Ha ocurrido un error, por favor revise los campos.",
+    "mensajeError1":"No hay un usuario con este email. Por favor revíselo.",
+    "mensajeError2":"La contrasela instroducida es incorrecta."
+}

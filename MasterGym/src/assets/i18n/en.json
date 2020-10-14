@@ -1,0 +1,5 @@
+{
+    "mensajeError":"There was an error ocurred. Please check the fields.",
+    "mensajeError1":"There is no user record corresponding to this identifier. The user may have been deleted.",
+    "mensajeError2":"The password is invalid or the user does not have a password."
+}
