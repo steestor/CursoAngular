@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
   formularioLogin: FormGroup;
   datosCorrectos: boolean = true;
   campoNoValido: boolean = true;
+  mensajeError: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,9 +37,15 @@ export class LoginComponent implements OnInit {
         .then((usuario) => {
           console.log(usuario);
         })
-        .catch((e) => (this.datosCorrectos = false));
+        .catch((e) => {
+          this.datosCorrectos = false;
+          this.mensajeError = e.message;
+          console.log(this.mensajeError);
+        });
     } else {
       this.datosCorrectos = false;
+      this.mensajeError =
+        'Se ha producido un error. Revisa que los datos sean correctos';
     }
   }
 }
